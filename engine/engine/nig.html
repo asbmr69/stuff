@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Links</title>
+    <style></style>
+</head>
+<body>
+    <h1>JSON Data</h1>
+    <div id="json-data">
+        <div id="urlContainer">URLs will be displayed here.</div>
+    </div>
+    <script>
+        const jsonFileURL = 'urls.json';
+
+        // Fetch the JSON data from the file
+        fetch(jsonFileURL)
+            .then(response => response.json())
+            .then(data => {
+                const jsonData = data; // Assuming your JSON contains an array of objects
+
+                const urlContainer = document.getElementById("urlContainer");
+
+                // Loop through the JSON array and create links for each URL
+                jsonData.forEach(item => {
+                    const url = item.url;
+
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.textContent = url;
+
+                    link.target = "_blank"; // Open the link in a new tab/window
+                    urlContainer.appendChild(link);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching JSON data:", error);
+            });
+    </script>
+</body>
+</html>
