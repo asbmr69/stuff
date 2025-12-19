@@ -1229,7 +1229,7 @@ interface LoginResponse {
 }
 
 ---
-
+```
 ## Part 7: Union & Intersection Types
 
 ### 7.1 Union Types
